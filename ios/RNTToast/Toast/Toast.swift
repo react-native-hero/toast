@@ -12,18 +12,20 @@ class ToastTask {
     
     public var position: String
     
-    public init(text: String, type: String, duration: String, position: String) {
+    public var view: UIView
+    
+    public init(text: String, type: String, duration: String, position: String, view: UIView) {
         self.text = text
         self.type = type
         self.duration = duration
         self.position = position
+        self.view = view
     }
     
 }
 
 @objc public class Toast : NSObject {
     
-    private var view: UIView
     private var configuration: ToastConfiguration
     
     private var currentTask: ToastTask?
@@ -34,19 +36,24 @@ class ToastTask {
     
     private var queue = [ToastTask]()
     
-    @objc public init(view: UIView, configuration: ToastConfiguration) {
-        self.view = view
+    @objc public init(configuration: ToastConfiguration) {
         self.configuration = configuration
     }
     
-    @objc public func show(text: String, type: String, duration: String, position: String) {
+    @objc public func show(text: String, type: String, duration: String, position: String, view: UIView) {
 
         // 一样的内容就算了
         if currentTask?.text == text {
             return
         }
 
-        queue.append(ToastTask(text: text, type: type, duration: duration, position: position))
+        queue.append(ToastTask(
+            text: text,
+            type: type,
+            duration: duration,
+            position: position,
+            view: view
+        ))
         
         // 如果有正在显示的 toast，则先隐藏
         if currentToast != nil {
@@ -69,7 +76,8 @@ class ToastTask {
         guard let task = queue.popLast() else {
             return
         }
-        
+     
+        let view = task.view
         let toast = UIView()
         
         toast.translatesAutoresizingMaskIntoConstraints = false
