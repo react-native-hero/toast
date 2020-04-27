@@ -22,8 +22,8 @@ export const POSITION = {
 
 export function show(options) {
   RNTToast.show({
-    type: options.type || RNTToast.TYPE_TEXT,
     text: options.text || 'undefined',
+    type: options.type || RNTToast.TYPE_TEXT,
     duration: options.duration || RNTToast.DURATION_SHORT,
     position: options.position || RNTToast.POSITION_CENTER,
   })

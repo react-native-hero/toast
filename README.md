@@ -52,6 +52,6 @@ show({
   // as shown below, these are the default values
   type: TYPE.TEXT,
   duration: DURATION.SHORT,
-  POSITION: POSITION.CENTER,
+  position: POSITION.CENTER,
 })
 ```
