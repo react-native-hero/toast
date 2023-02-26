@@ -2,8 +2,7 @@
 import UIKit
 import Foundation
 
-let bundlePath = Bundle(for: ToastConfiguration.self).path(forResource: "Toast", ofType: "bundle")!
-
+let bundlePath = Bundle(for: ToastConfiguration.self).path(forResource: "HeroToast", ofType: "bundle")!
 let bundle = Bundle(path: bundlePath)
 
 @objc public class ToastConfiguration : NSObject {

@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
 
   s.source           = { :git => "https://github.com/react-native-hero/toast.git", :tag => "v#{s.version}" }
   s.source_files     = "ios/**/*.{h,m,swift}"
-  s.resource_bundles = { 'Toast' => ['ios/RNTToast/Assets.xcassets'] }
+  s.resource_bundles = { 'HeroToast' => ['ios/RNTToast/Assets.xcassets'] }
   s.swift_version    = '5.0'
 
   s.dependency 'React'
